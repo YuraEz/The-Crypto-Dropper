@@ -1,9 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NativeCameraNamespace;
 
 public class PhotosController : MonoBehaviour
 {
+    public static IEnumerator TakePhoto(System.Action<Texture2D> onPhotoTaken)
+    {
+        // Запрашиваем разрешение и делаем снимок
+        NativeCamera.Permission permission = NativeCamera.TakePicture((path) =>
+        {
+            if (path != null)
+            {
+                // Загружаем изображение в Texture2D
+                Texture2D texture = LoadImage(path);
+
+                if (texture != null)
+                {
+                    // Вызываем коллбэк с загруженным изображением
+                    onPhotoTaken?.Invoke(texture);
+                }
+                else
+                {
+                    onPhotoTaken?.Invoke(null);
+                }
+            }
+            else
+            {
+                onPhotoTaken?.Invoke(null);
+            }
+        }, 1024);
+
+        yield return new WaitForEndOfFrame();
+    }
+
     public static IEnumerator loadImageFromGallery(System.Action<Texture2D> onImageLoaded)
     {
         // Запрашиваем изображение из галереи
