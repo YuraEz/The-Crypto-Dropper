@@ -36481,7 +36481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 404.25, y: 309}
+  m_AnchoredPosition: {x: 404.25, y: 355}
   m_SizeDelta: {x: 758, y: 115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714068394
@@ -104347,6 +104347,10 @@ PrefabInstance:
     - target: {fileID: 3569497259765492573, guid: 81fad029568b4974eb678abd2ced2436, type: 3}
       propertyPath: screenName
       value: calculator
+      objectReference: {fileID: 0}
+    - target: {fileID: 6067823898143721263, guid: 81fad029568b4974eb678abd2ced2436, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 6181404278106514713, guid: 81fad029568b4974eb678abd2ced2436, type: 3}
       propertyPath: m_Sprite
